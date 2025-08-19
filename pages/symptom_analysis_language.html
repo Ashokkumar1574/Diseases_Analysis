@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SymptomChecker - Health Analysis</title>
+    <meta name="description" content="Get instant preliminary health insights by analyzing your symptoms with our AI-powered medical database." />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fsymptomche8926back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm border-b border-secondary-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Brand -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-semibold text-text-primary">SymptomChecker</h1>
+                        <p class="text-sm text-text-secondary">Health Analysis</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="symptom_analysis_landing_page.html" class="text-primary font-medium">Home</a>
+                    <a href="disease_analysis_result.html" class="text-text-secondary hover:text-primary transition-colors">Results</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 text-text-secondary hover:text-primary" id="mobileMenuBtn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden mt-4 pb-4 border-t border-secondary-200 hidden" id="mobileMenu">
+                <nav class="flex flex-col space-y-3 pt-4">
+                    <a href="symptom_analysis_landing_page.html" class="text-primary font-medium">Home</a>
+                    <a href="disease_analysis_result.html" class="text-text-secondary hover:text-primary transition-colors">Results</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-primary-50 to-accent-50 py-16 md:py-24">
+    <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left">
+                    
+                    <h1 class="text-4xl md:text-5xl font-bold text-text-primary mb-6 text-balance">
+                        Find Your Most Likely Condition with 
+                        <span class="text-primary">Precise</span> 
+                    </h1>
+                    
+                    <p class="text-xl text-text-secondary mb-8 max-w-2xl text-balance">
+                        Get the single most accurate diagnosis by describing your symptoms. Our enhanced algorithm provides one highly specific match from our comprehensive medical database.
+                    </p>
+                    
+                    <!-- Trust Signals -->
+                    <div class="flex flex-wrap justify-center lg:justify-start items-center gap-6 text-sm text-text-secondary">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Precise Single Match
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                            Privacy Protected
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                            Exact Symptom Analysis
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Medical Diagnostic Banner Image -->
+                <div class="flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <div class="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-blue-100 to-teal-100 rounded-2xl overflow-hidden shadow-lg">
+                            <!-- Medical Diagnostic Illustration -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <!-- Stethoscope Icon -->
+                                <svg class="w-48 h-48 md:w-56 md:h-56 text-blue-600 opacity-20" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19.43 10.98c-.04-.32-.07-.66-.07-1.01 0-3.85-3.14-7-7-7s-7 3.15-7 7c0 .35.03.69.07 1.01C3.98 11.73 3 13.31 3 15.05c0 2.08 1.69 3.77 3.77 3.77.75 0 1.47-.22 2.08-.63.61.41 1.33.63 2.08.63s1.47-.22 2.08-.63c.61.41 1.33.63 2.08.63 2.08 0 3.77-1.69 3.77-3.77 0-1.74-.98-3.32-2.43-4.07zM6.77 17.82c-1.53 0-2.77-1.24-2.77-2.77s1.24-2.77 2.77-2.77 2.77 1.24 2.77 2.77-1.24 2.77-2.77 2.77zm10.46 0c-1.53 0-2.77-1.24-2.77-2.77s1.24-2.77 2.77-2.77 2.77 1.24 2.77 2.77-1.24 2.77-2.77 2.77z"/>
+                                </svg>
+                            </div>
+                            
+                            <!-- Medical Device Icons Overlay -->
+                            <div class="absolute top-4 left-4">
+                                <div class="w-12 h-12 bg-white/90 rounded-lg flex items-center justify-center shadow-md">
+                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="absolute top-16 right-6">
+                                <div class="w-10 h-10 bg-white/90 rounded-lg flex items-center justify-center shadow-md">
+                                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="absolute bottom-6 left-6">
+                                <div class="w-10 h-10 bg-white/90 rounded-lg flex items-center justify-center shadow-md">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="absolute bottom-16 right-4">
+                                <div class="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center shadow-md">
+                                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating Diagnostic Stats -->
+                            <div class="absolute -top-4 -right-4 bg-white rounded-xl p-3 shadow-lg border border-blue-100">
+                                <div class="text-xs text-text-secondary">Precision Rate</div>
+                                <div class="text-lg font-bold text-blue-600">98%</div>
+                            </div>
+                            
+                            <div class="absolute -bottom-4 -left-4 bg-white rounded-xl p-3 shadow-lg border border-teal-100">
+                                <div class="text-xs text-text-secondary">Single Match</div>
+                                <div class="text-lg font-bold text-teal-600">Focus</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Symptom Input Section -->
+<section class="py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-text-primary mb-4">Describe Your Symptoms</h2>
+                <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+                    Enter your symptoms and basic information for a more personalized analysis. Be as specific as possible for more accurate results.
+                </p>
+            </div>
+            
+            <!-- Input Form -->
+            <div class="medical-card p-8 md:p-10">
+                <form id="symptomForm" class="space-y-8">
+                    <!-- Personal Information Section -->
+                    <div class="bg-primary-50 rounded-lg p-6 border border-primary-100">
+                        <h3 class="text-lg font-semibold text-primary mb-4 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                            Personal Information (Optional but Recommended)
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Age Input -->
+                            <div class="space-y-2">
+                                <label for="ageInput" class="block text-sm font-medium text-text-primary">
+                                    Age
+                                </label>
+                                <div class="relative">
+                                    <input type="number" id="ageInput" name="age" min="1" max="120" class="w-full px-4 py-3 border-2 border-secondary-200 rounded-lg focus:border-primary focus:ring-0 text-base placeholder-text-secondary medical-focus transition-colors" placeholder="Enter your age" aria-describedby="ageHelp" />
+                                </div>
+                                <p id="ageHelp" class="text-xs text-text-secondary">
+                                    Helps improve diagnosis accuracy for age-related conditions
+                                </p>
+                            </div>
+                            
+                            <!-- Sex/Gender Input -->
+                            <div class="space-y-2">
+                                <label for="sexInput" class="block text-sm font-medium text-text-primary">
+                                    Biological Sex
+                                </label>
+                                <div class="relative">
+                                    <select id="sexInput" name="sex" class="w-full px-4 py-3 border-2 border-secondary-200 rounded-lg focus:border-primary focus:ring-0 text-base medical-focus transition-colors bg-white" aria-describedby="sexHelp">
+                                        <option value>Select biological sex</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                                <p id="sexHelp" class="text-xs text-text-secondary">
+                                    Some conditions are more common in specific biological sexes
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Symptom Input Field -->
+                    <div class="space-y-4">
+                        <label for="symptomsInput" class="block text-lg font-medium text-text-primary">
+                            Enter Your Symptoms
+                            <span class="text-error ml-1">*</span>
+                        </label>
+                        
+                        <div class="relative">
+                            <textarea id="symptomsInput" name="symptoms" rows="4" class="w-full px-4 py-4 border-2 border-secondary-200 rounded-lg focus:border-primary focus:ring-0 resize-none text-base placeholder-text-secondary medical-focus transition-colors" placeholder="Example: headache, fever, sore throat, fatigue, nausea" required aria-describedby="symptomsHelp symptomsError"></textarea>
+                            
+                            <!-- Character Counter -->
+                            <div class="absolute bottom-3 right-3 text-sm text-text-secondary">
+                                <span id="charCount">0</span>/500
+                            </div>
+                        </div>
+                        
+                        <!-- Help Text -->
+                        <p id="symptomsHelp" class="text-sm text-text-secondary flex items-start">
+                            <svg class="w-4 h-4 mt-0.5 mr-2 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Separate multiple symptoms with commas. Include duration, severity, and location when relevant for better analysis.
+                        </p>
+                        
+                        <!-- Error Message -->
+                        <div id="symptomsError" class="text-sm text-error hidden flex items-start">
+                            <svg class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span id="errorMessage"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Example Symptoms -->
+                    <div class="bg-secondary-50 rounded-lg p-6">
+                        <h4 class="font-medium text-text-primary mb-4 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                            Common Symptom Examples:
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                            <button type="button" class="text-left p-3 rounded-lg hover:bg-white transition-colors example-symptom border border-transparent hover:border-primary-100" data-symptoms="headache, fever, fatigue">
+                                • Headache, fever, fatigue
+                            </button>
+                            <button type="button" class="text-left p-3 rounded-lg hover:bg-white transition-colors example-symptom border border-transparent hover:border-primary-100" data-symptoms="cough, sore throat, runny nose">
+                                • Cough, sore throat, runny nose
+                            </button>
+                            <button type="button" class="text-left p-3 rounded-lg hover:bg-white transition-colors example-symptom border border-transparent hover:border-primary-100" data-symptoms="nausea, stomach pain, diarrhea">
+                                • Nausea, stomach pain, diarrhea
+                            </button>
+                            <button type="button" class="text-left p-3 rounded-lg hover:bg-white transition-colors example-symptom border border-transparent hover:border-primary-100" data-symptoms="chest pain, shortness of breath">
+                                • Chest pain, shortness of breath
+                            </button>
+                            <button type="button" class="text-left p-3 rounded-lg hover:bg-white transition-colors example-symptom border border-transparent hover:border-primary-100" data-symptoms="joint pain, swelling, stiffness">
+                                • Joint pain, swelling, stiffness
+                            </button>
+                            <button type="button" class="text-left p-3 rounded-lg hover:bg-white transition-colors example-symptom border border-transparent hover:border-primary-100" data-symptoms="dizziness, blurred vision, weakness">
+                                • Dizziness, blurred vision, weakness
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button type="submit" id="analyzeBtn" class="btn-primary flex-1 flex items-center justify-center space-x-2 touch-target">
+                            <span id="btnText">Analyze Symptoms</span>
+                            <svg id="btnIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            
+                            <!-- Loading Spinner (Hidden by default) -->
+                            <svg id="loadingSpinner" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                            </svg>
+                        </button>
+                        
+                        <button type="button" id="clearBtn" class="btn-secondary touch-target">
+                            Clear All
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- How It Works Section -->
+        <section class="bg-surface py-16 md:py-20">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-text-primary mb-4">How It Works</h2>
+                        <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+                            Our AI-powered system analyzes your symptoms using advanced medical databases and algorithms.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Step 1 -->
+                        <div class="text-center fade-in stagger-1">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span class="text-2xl font-bold text-white">1</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-text-primary mb-4">Input Symptoms</h3>
+                            <p class="text-text-secondary">
+                                Describe your symptoms in detail using natural language. Our system understands medical terminology and common descriptions.
+                            </p>
+                        </div>
+                        
+                        <!-- Step 2 -->
+                        <div class="text-center fade-in stagger-2">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span class="text-2xl font-bold text-white">2</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-text-primary mb-4">AI Analysis</h3>
+                            <p class="text-text-secondary">
+                                Our algorithm matches your symptoms against a comprehensive medical database to identify potential conditions.
+                            </p>
+                        </div>
+                        
+                        <!-- Step 3 -->
+                        <div class="text-center fade-in stagger-3">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span class="text-2xl font-bold text-white">3</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-text-primary mb-4">Get Results</h3>
+                            <p class="text-text-secondary">
+                                Receive preliminary insights and recommendations. Always consult with healthcare professionals for proper diagnosis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-secondary-200 py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Medical Disclaimer -->
+                <div class="bg-error-50 border border-error-100 rounded-lg p-6 mb-8">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-error flex-shrink-0 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-error mb-2">Important Medical Disclaimer</h4>
+                            <p class="text-sm text-error leading-relaxed">
+                                This tool provides preliminary health information for educational purposes only and should not replace professional medical advice, diagnosis, or treatment. Always consult with qualified healthcare providers for proper medical evaluation. In case of medical emergencies, contact emergency services immediately.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer Content -->
+                <div class="text-center">
+                    <div class="flex items-center justify-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <span class="text-lg font-semibold text-text-primary">SymptomChecker</span>
+                    </div>
+                    
+                    <p class="text-text-secondary mb-6">
+                        AI-powered preliminary health analysis for educational purposes.
+                    </p>
+                    
+                    <div class="flex flex-wrap justify-center items-center gap-6 text-sm text-text-secondary mb-6">
+                        <a href="javascript:void(0)" class="hover:text-primary transition-colors">Privacy Policy</a>
+                        <a href="javascript:void(0)" class="hover:text-primary transition-colors">Terms of Service</a>
+                        <a href="javascript:void(0)" class="hover:text-primary transition-colors">Medical Disclaimer</a>
+                        <a href="javascript:void(0)" class="hover:text-primary transition-colors">Contact Support</a>
+                    </div>
+                    
+                    <p class="text-sm text-text-secondary">
+                        © 2025 SymptomChecker. All rights reserved. | For educational use only.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Enhanced Disease Database - Removed Common Cold and Influenza for more precise matching
+        const diseaseDatabase = [
+            // Infectious Diseases (1-18) - Removed Common Cold (#1) and Influenza (#2)
+            { id: 3, name: "COVID-19", symptoms: ["fever", "cough", "loss of taste", "loss of smell", "fatigue", "shortness of breath"], category: "Infectious" },
+            { id: 4, name: "Tuberculosis (TB)", symptoms: ["chronic cough", "night sweats", "weight loss", "fever", "chest pain"], category: "Infectious" },
+            { id: 5, name: "Pneumonia", symptoms: ["fever", "chest pain", "productive cough", "shortness of breath", "fatigue"], category: "Infectious" },
+            { id: 6, name: "Malaria", symptoms: ["high fever", "chills", "sweating", "headache", "nausea", "fatigue"], category: "Infectious" },
+            { id: 7, name: "Dengue Fever", symptoms: ["severe headache", "joint pain", "skin rash", "fever", "muscle pain"], category: "Infectious" },
+            { id: 8, name: "Typhoid Fever", symptoms: ["prolonged fever", "abdominal pain", "constipation", "diarrhea", "headache"], category: "Infectious" },
+            { id: 9, name: "Cholera", symptoms: ["severe watery diarrhea", "dehydration", "leg cramps", "nausea", "vomiting"], category: "Infectious" },
+            { id: 10, name: "Hepatitis A", symptoms: ["jaundice", "fatigue", "loss of appetite", "nausea", "abdominal pain"], category: "Infectious" },
+            { id: 11, name: "Hepatitis B", symptoms: ["dark urine", "abdominal pain", "jaundice", "fatigue", "nausea"], category: "Infectious" },
+            { id: 12, name: "Hepatitis C", symptoms: ["fatigue", "joint pain", "liver dysfunction", "nausea", "abdominal pain"], category: "Infectious" },
+            { id: 13, name: "Measles", symptoms: ["fever", "red rash", "cough", "runny nose", "conjunctivitis"], category: "Infectious" },
+            { id: 14, name: "Mumps", symptoms: ["swollen salivary glands", "fever", "headache", "muscle aches", "fatigue"], category: "Infectious" },
+            { id: 15, name: "Chickenpox", symptoms: ["itchy rash", "fever", "fatigue", "headache", "loss of appetite"], category: "Infectious" },
+            { id: 16, name: "Whooping Cough (Pertussis)", symptoms: ["severe coughing fits", "whoop sound", "vomiting after cough", "runny nose"], category: "Infectious" },
+            { id: 17, name: "Polio", symptoms: ["muscle weakness", "fever", "paralysis", "headache", "stiff neck"], category: "Infectious" },
+            { id: 18, name: "Leprosy", symptoms: ["skin lesions", "numbness", "muscle weakness", "skin discoloration"], category: "Infectious" },
+            { id: 19, name: "HIV/AIDS", symptoms: ["weight loss", "recurrent infections", "night sweats", "fatigue", "fever"], category: "Infectious" },
+            { id: 20, name: "Syphilis", symptoms: ["genital sore", "rash on palms", "neurological problems", "fever", "headache"], category: "Infectious" },
+
+            // Respiratory Diseases (21-25)
+            { id: 21, name: "Asthma", symptoms: ["wheezing", "shortness of breath", "chest tightness", "coughing", "difficulty breathing"], category: "Respiratory" },
+            { id: 22, name: "Chronic Bronchitis", symptoms: ["persistent cough", "mucus production", "fatigue", "wheezing", "chest discomfort"], category: "Respiratory" },
+            { id: 23, name: "COPD", symptoms: ["breathlessness", "chronic cough", "wheezing", "fatigue", "chest tightness"], category: "Respiratory" },
+            { id: 24, name: "Lung Cancer", symptoms: ["persistent cough", "chest pain", "coughing blood", "weight loss", "shortness of breath"], category: "Respiratory" },
+            { id: 25, name: "Pulmonary Embolism", symptoms: ["sudden breathlessness", "chest pain", "rapid heartbeat", "coughing blood", "dizziness"], category: "Respiratory" },
+
+            // Cardiovascular Diseases (26-32)
+            { id: 26, name: "Hypertension (High BP)", symptoms: ["headache", "dizziness", "nosebleeds", "chest pain", "shortness of breath"], category: "Cardiovascular" },
+            { id: 27, name: "Hypotension (Low BP)", symptoms: ["fainting", "blurred vision", "dizziness", "weakness", "nausea"], category: "Cardiovascular" },
+            { id: 28, name: "Heart Attack (Myocardial Infarction)", symptoms: ["chest pain", "sweating", "left arm pain", "nausea", "shortness of breath"], category: "Cardiovascular" },
+            { id: 29, name: "Angina", symptoms: ["chest pressure", "shortness of breath", "fatigue", "dizziness", "nausea"], category: "Cardiovascular" },
+            { id: 30, name: "Congestive Heart Failure", symptoms: ["swelling in legs", "shortness of breath", "fatigue", "rapid heartbeat", "persistent cough"], category: "Cardiovascular" },
+            { id: 31, name: "Stroke", symptoms: ["sudden weakness", "slurred speech", "facial droop", "confusion", "severe headache"], category: "Cardiovascular" },
+            { id: 32, name: "Arrhythmia", symptoms: ["irregular heartbeat", "palpitations", "dizziness", "chest pain", "fainting"], category: "Cardiovascular" },
+
+            // Digestive System Diseases (33-41)
+            { id: 33, name: "Gastritis", symptoms: ["stomach pain", "nausea", "bloating", "vomiting", "loss of appetite"], category: "Digestive" },
+            { id: 34, name: "Peptic Ulcer", symptoms: ["burning stomach pain", "nausea", "indigestion", "bloating", "weight loss"], category: "Digestive" },
+            { id: 35, name: "GERD (Acid Reflux)", symptoms: ["heartburn", "regurgitation", "chest discomfort", "difficulty swallowing", "chronic cough"], category: "Digestive" },
+            { id: 36, name: "Appendicitis", symptoms: ["severe abdominal pain", "fever", "nausea", "vomiting", "loss of appetite"], category: "Digestive" },
+            { id: 37, name: "Gallstones", symptoms: ["upper abdominal pain", "nausea", "vomiting", "fever", "jaundice"], category: "Digestive" },
+            { id: 38, name: "Pancreatitis", symptoms: ["severe abdominal pain", "nausea", "back pain", "fever", "vomiting"], category: "Digestive" },
+            { id: 39, name: "Irritable Bowel Syndrome (IBS)", symptoms: ["abdominal cramps", "diarrhea", "constipation", "bloating", "gas"], category: "Digestive" },
+            { id: 40, name: "Crohn's Disease", symptoms: ["abdominal pain", "diarrhea", "weight loss", "fatigue", "fever"], category: "Digestive" },
+            { id: 41, name: "Ulcerative Colitis", symptoms: ["bloody diarrhea", "abdominal cramps", "urgency to defecate", "weight loss", "fatigue"], category: "Digestive" },
+
+            // Endocrine/Metabolic Diseases (42-46)
+            { id: 42, name: "Diabetes Mellitus (Type 1/2)", symptoms: ["excessive thirst", "frequent urination", "fatigue", "blurred vision", "weight loss"], category: "Endocrine" },
+            { id: 43, name: "Hyperthyroidism", symptoms: ["weight loss", "tremors", "rapid heartbeat", "sweating", "nervousness"], category: "Endocrine" },
+            { id: 44, name: "Hypothyroidism", symptoms: ["fatigue", "weight gain", "cold intolerance", "dry skin", "constipation"], category: "Endocrine" },
+            { id: 45, name: "Cushing's Syndrome", symptoms: ["moon face", "weight gain", "high bp", "muscle weakness", "purple stretch marks"], category: "Endocrine" },
+            { id: 46, name: "Addison's Disease", symptoms: ["fatigue", "low bp", "skin darkening", "salt craving", "muscle weakness"], category: "Endocrine" },
+
+            // Neurological Diseases (47-54)
+            { id: 47, name: "Migraine", symptoms: ["severe headache", "nausea", "light sensitivity", "sound sensitivity", "visual disturbances"], category: "Neurological" },
+            { id: 48, name: "Epilepsy", symptoms: ["seizures", "confusion", "unconsciousness", "muscle jerking", "loss of awareness"], category: "Neurological" },
+            { id: 49, name: "Parkinson's Disease", symptoms: ["tremor", "muscle stiffness", "slow movement", "balance problems", "speech changes"], category: "Neurological" },
+            { id: 50, name: "Alzheimer's Disease", symptoms: ["memory loss", "confusion", "personality change", "difficulty speaking", "disorientation"], category: "Neurological" },
+            { id: 51, name: "Multiple Sclerosis", symptoms: ["numbness", "vision problems", "fatigue", "muscle weakness", "coordination problems"], category: "Neurological" },
+            { id: 52, name: "Meningitis", symptoms: ["severe headache", "neck stiffness", "fever", "sensitivity to light", "confusion"], category: "Neurological" },
+            { id: 53, name: "Encephalitis", symptoms: ["confusion", "fever", "seizures", "headache", "personality changes"], category: "Neurological" },
+            { id: 54, name: "Bell's Palsy", symptoms: ["facial weakness", "drooping mouth", "drooping eyelid", "difficulty eating", "hearing sensitivity"], category: "Neurological" },
+
+            // Musculoskeletal Diseases (55-59)
+            { id: 55, name: "Rheumatoid Arthritis", symptoms: ["joint pain", "swelling", "morning stiffness", "fatigue", "fever"], category: "Musculoskeletal" },
+            { id: 56, name: "Osteoarthritis", symptoms: ["joint pain", "stiffness", "reduced flexibility", "grating sensation", "bone spurs"], category: "Musculoskeletal" },
+            { id: 57, name: "Gout", symptoms: ["joint swelling", "intense pain", "redness", "warmth in joint", "limited movement"], category: "Musculoskeletal" },
+            { id: 58, name: "Osteoporosis", symptoms: ["fragile bones", "back pain", "height loss", "stooped posture", "fractures"], category: "Musculoskeletal" },
+            { id: 59, name: "Fibromyalgia", symptoms: ["muscle pain", "fatigue", "sleep problems", "tender points", "cognitive difficulties"], category: "Musculoskeletal" },
+
+            // Skin Diseases (60-65)
+            { id: 60, name: "Psoriasis", symptoms: ["red scaly patches", "itching", "cracked skin", "burning sensation", "thick nails"], category: "Skin" },
+            { id: 61, name: "Eczema", symptoms: ["itchy skin", "red rash", "dry patches", "cracked skin", "swelling"], category: "Skin" },
+            { id: 62, name: "Scabies", symptoms: ["severe itching", "red bumps", "burrow tracks", "rash between fingers", "sores"], category: "Skin" },
+            { id: 63, name: "Ringworm", symptoms: ["circular rash", "itching", "red patches", "scaling", "hair loss"], category: "Skin" },
+            { id: 64, name: "Vitiligo", symptoms: ["white skin patches", "loss of pigmentation", "sensitivity to sun", "premature graying"], category: "Skin" },
+            { id: 65, name: "Acne", symptoms: ["pimples", "blackheads", "oily skin", "scarring", "cysts"], category: "Skin" },
+
+            // Kidney & Urinary Diseases (66-69)
+            { id: 66, name: "Urinary Tract Infection (UTI)", symptoms: ["burning urination", "frequent urination", "cloudy urine", "pelvic pain", "strong urine odor"], category: "Urinary" },
+            { id: 67, name: "Kidney Stones", symptoms: ["severe flank pain", "blood in urine", "nausea", "frequent urination", "cloudy urine"], category: "Urinary" },
+            { id: 68, name: "Chronic Kidney Disease", symptoms: ["swelling in legs", "fatigue", "reduced urine output", "shortness of breath", "nausea"], category: "Urinary" },
+            { id: 69, name: "Glomerulonephritis", symptoms: ["blood in urine", "swelling", "high bp", "reduced urine output", "fatigue"], category: "Urinary" },
+
+            // Blood & Immune Diseases (70-74)
+            { id: 70, name: "Anemia", symptoms: ["fatigue", "pale skin", "shortness of breath", "dizziness", "cold hands"], category: "Blood" },
+            { id: 71, name: "Leukemia", symptoms: ["fatigue", "frequent infections", "bruising", "weight loss", "swollen lymph nodes"], category: "Blood" },
+            { id: 72, name: "Lymphoma", symptoms: ["swollen lymph nodes", "night sweats", "weight loss", "fever", "fatigue"], category: "Blood" },
+            { id: 73, name: "Hemophilia", symptoms: ["excessive bleeding", "easy bruising", "joint pain", "swelling", "prolonged bleeding"], category: "Blood" },
+            { id: 74, name: "Thalassemia", symptoms: ["fatigue", "pale skin", "bone deformities", "growth delays", "abdominal swelling"], category: "Blood" },
+
+            // Eye Diseases (75-78)
+            { id: 75, name: "Conjunctivitis", symptoms: ["red eyes", "itching", "discharge", "burning sensation", "blurred vision"], category: "Eye" },
+            { id: 76, name: "Glaucoma", symptoms: ["eye pain", "blurred vision", "halos around lights", "headache", "nausea"], category: "Eye" },
+            { id: 77, name: "Cataract", symptoms: ["blurred vision", "sensitivity to light", "cloudy lens", "difficulty seeing at night", "double vision"], category: "Eye" },
+            { id: 78, name: "Retinal Detachment", symptoms: ["sudden vision loss", "floaters", "flashing lights", "curtain over vision", "eye pain"], category: "Eye" },
+
+            // Ear, Nose, Throat Diseases (79-82)
+            { id: 79, name: "Otitis Media (Ear infection)", symptoms: ["ear pain", "fever", "hearing loss", "fluid drainage", "irritability"], category: "ENT" },
+            { id: 80, name: "Tonsillitis", symptoms: ["sore throat", "fever", "difficulty swallowing", "swollen tonsils", "bad breath"], category: "ENT" },
+            { id: 81, name: "Sinusitis", symptoms: ["headache", "facial pressure", "nasal congestion", "thick nasal discharge", "reduced smell"], category: "ENT" },
+            { id: 82, name: "Hearing Loss", symptoms: ["difficulty hearing", "tinnitus", "speech issues", "ear fullness", "balance problems"], category: "ENT" },
+
+            // Cancers (83-87)
+            { id: 83, name: "Breast Cancer", symptoms: ["lump in breast", "nipple discharge", "skin dimpling", "breast pain", "swollen lymph nodes"], category: "Cancer" },
+            { id: 84, name: "Prostate Cancer", symptoms: ["frequent urination", "weak urine flow", "pelvic pain", "blood in urine", "erectile dysfunction"], category: "Cancer" },
+            { id: 85, name: "Colon Cancer", symptoms: ["blood in stool", "abdominal pain", "weight loss", "bowel habit changes", "fatigue"], category: "Cancer" },
+            { id: 86, name: "Cervical Cancer", symptoms: ["vaginal bleeding", "pelvic pain", "discharge", "pain during intercourse", "leg swelling"], category: "Cancer" },
+            { id: 87, name: "Skin Cancer (Melanoma)", symptoms: ["mole changes", "irregular borders", "dark patches", "bleeding mole", "new growths"], category: "Cancer" },
+
+            // Other Diseases (88-98) - Reduced count due to removals
+            { id: 88, name: "Obesity", symptoms: ["excess body fat", "breathlessness", "joint pain", "fatigue", "sleep apnea"], category: "Metabolic" },
+            { id: 89, name: "Depression", symptoms: ["persistent sadness", "loss of interest", "sleep disturbance", "fatigue", "appetite changes"], category: "Mental Health" },
+            { id: 90, name: "Anxiety Disorder", symptoms: ["excessive worry", "palpitations", "restlessness", "muscle tension", "panic attacks"], category: "Mental Health" },
+            { id: 91, name: "Bipolar Disorder", symptoms: ["mood swings", "hyperactivity", "depression episodes", "racing thoughts", "impulsive behavior"], category: "Mental Health" },
+            { id: 92, name: "Schizophrenia", symptoms: ["hallucinations", "delusions", "social withdrawal", "disorganized thinking", "flat affect"], category: "Mental Health" },
+            { id: 93, name: "Autism Spectrum Disorder", symptoms: ["social difficulty", "repetitive behavior", "communication issues", "sensory sensitivity", "routine adherence"], category: "Mental Health" },
+            { id: 94, name: "ADHD", symptoms: ["inattention", "hyperactivity", "impulsiveness", "difficulty organizing", "restlessness"], category: "Mental Health" },
+            { id: 95, name: "Insomnia", symptoms: ["difficulty sleeping", "fatigue", "irritability", "daytime sleepiness", "concentration problems"], category: "Sleep" },
+            { id: 96, name: "Heat Stroke", symptoms: ["high body temp", "confusion", "dry skin", "rapid pulse", "nausea"], category: "Environmental" },
+            { id: 97, name: "Dehydration", symptoms: ["thirst", "dry mouth", "dizziness", "fatigue", "dark urine"], category: "Environmental" },
+            { id: 98, name: "Allergic Rhinitis", symptoms: ["sneezing", "runny nose", "itchy eyes", "nasal congestion", "post-nasal drip"], category: "Allergic" },
+            { id: 99, name: "Food Poisoning", symptoms: ["nausea", "diarrhea", "abdominal cramps", "vomiting", "fever"], category: "Infectious" },
+            { id: 100, name: "Sepsis", symptoms: ["high fever", "confusion", "rapid breathing", "rapid heart rate", "low blood pressure"], category: "Infectious" }
+        ];
+
+        // DOM Elements
+        const symptomForm = document.getElementById('symptomForm');
+        const symptomsInput = document.getElementById('symptomsInput');
+        const ageInput = document.getElementById('ageInput');
+        const sexInput = document.getElementById('sexInput');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const symptomsError = document.getElementById('symptomsError');
+        const errorMessage = document.getElementById('errorMessage');
+        const charCount = document.getElementById('charCount');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const exampleSymptoms = document.querySelectorAll('.example-symptom');
+
+        // Character counter
+        symptomsInput.addEventListener('input', function() {
+            const count = this.value.length;
+            charCount.textContent = count;
+            
+            if (count > 500) {
+                charCount.classList.add('text-error');
+                this.classList.add('border-error');
+            } else {
+                charCount.classList.remove('text-error');
+                this.classList.remove('border-error');
+            }
+            
+            // Clear error when user starts typing
+            if (count > 0) {
+                hideError();
+            }
+        });
+
+        // Example symptoms click handlers
+        exampleSymptoms.forEach(button => {
+            button.addEventListener('click', function() {
+                const symptoms = this.getAttribute('data-symptoms');
+                symptomsInput.value = symptoms;
+                symptomsInput.focus();
+                charCount.textContent = symptoms.length;
+                hideError();
+            });
+        });
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Form validation
+        function validateSymptoms(symptoms) {
+            if (!symptoms.trim()) {
+                return 'Please enter at least one symptom.';
+            }
+            
+            if (symptoms.length > 500) {
+                return 'Please limit your symptoms to 500 characters or less.';
+            }
+            
+            // Check for minimum meaningful input
+            if (symptoms.trim().length < 3) {
+                return 'Please provide more detailed symptom information.';
+            }
+            
+            // Basic validation for meaningful content
+            const words = symptoms.trim().split(/[\s,]+/).filter(word => word.length > 0);
+            if (words.length === 0) {
+                return 'Please enter valid symptoms separated by commas.';
+            }
+            
+            return null;
+        }
+
+        // Age validation
+        function validateAge(age) {
+            if (age && (age < 1 || age > 120)) {
+                return 'Please enter a valid age between 1 and 120.';
+            }
+            return null;
+        }
+
+        // Enhanced exact symptom matching algorithm - returns only the single best match
+        function analyzeSymptoms(userSymptoms, age, sex) {
+            const symptoms = userSymptoms.toLowerCase().split(/[,\s]+/).map(s => s.trim()).filter(s => s.length > 0);
+            const matches = [];
+
+            diseaseDatabase.forEach(disease => {
+                let exactMatchCount = 0;
+                let partialMatchCount = 0;
+                const matchedSymptoms = [];
+
+                disease.symptoms.forEach(diseaseSymptom => {
+                    const diseaseSymptomLower = diseaseSymptom.toLowerCase();
+                    symptoms.forEach(userSymptom => {
+                        const userSymptomLower = userSymptom.toLowerCase();
+                        
+                        // Exact matches get highest priority
+                        if (diseaseSymptomLower === userSymptomLower || 
+                            diseaseSymptomLower.includes(userSymptomLower) || 
+                            userSymptomLower.includes(diseaseSymptomLower)) {
+                            exactMatchCount++;
+                            if (!matchedSymptoms.includes(diseaseSymptom)) {
+                                matchedSymptoms.push(diseaseSymptom);
+                            }
+                        }
+                        // Fuzzy matches for close spellings
+                        else if (levenshteinDistance(userSymptomLower, diseaseSymptomLower) <= 1 && userSymptomLower.length > 3) {
+                            partialMatchCount++;
+                            if (!matchedSymptoms.includes(diseaseSymptom)) {
+                                matchedSymptoms.push(diseaseSymptom);
+                            }
+                        }
+                    });
+                });
+
+                if (exactMatchCount > 0 || partialMatchCount > 0) {
+                    // Weighted scoring: exact matches worth 3x more than partial matches
+                    const totalScore = (exactMatchCount * 3) + partialMatchCount;
+                    let matchPercentage = Math.min((totalScore / (disease.symptoms.length * 3)) * 100, 100);
+
+                    // Bonus for having more exact matches
+                    if (exactMatchCount > 1) {
+                        matchPercentage *= 1.2;
+                    }
+
+                    // Age-based adjustments
+                    if (age) {
+                        matchPercentage = adjustForAge(disease, age, matchPercentage);
+                    }
+
+                    // Sex-based adjustments
+                    if (sex && sex !== 'prefer-not-to-say') {
+                        matchPercentage = adjustForSex(disease, sex, matchPercentage);
+                    }
+
+                    matches.push({
+                        disease: disease.name,
+                        category: disease.category,
+                        matchPercentage: Math.round(Math.min(matchPercentage, 100)),
+                        matchedSymptoms: matchedSymptoms,
+                        totalSymptoms: disease.symptoms.length,
+                        exactMatches: exactMatchCount,
+                        partialMatches: partialMatchCount
+                    });
+                }
+            });
+
+            // Sort by match percentage, then by exact matches, then by fewer total symptoms (more specific conditions)
+            const sortedMatches = matches.sort((a, b) => {
+                if (b.matchPercentage !== a.matchPercentage) {
+                    return b.matchPercentage - a.matchPercentage;
+                }
+                if (b.exactMatches !== a.exactMatches) {
+                    return b.exactMatches - a.exactMatches;
+                }
+                return a.totalSymptoms - b.totalSymptoms; // Prefer more specific conditions
+            });
+
+            // Return only the single best match
+            return sortedMatches.length > 0 ? [sortedMatches[0]] : [];
+        }
+
+        // Age-based adjustments
+        function adjustForAge(disease, age, percentage) {
+            const ageFactor = {
+                // Diseases more common in children (0-18)
+                'Whooping Cough (Pertussis)': age < 18 ? 1.2 : 0.8,
+                'Chickenpox': age < 18 ? 1.3 : 0.7,
+                'Measles': age < 18 ? 1.2 : 0.8,
+                'Mumps': age < 18 ? 1.2 : 0.8,
+                'ADHD': age < 18 ? 1.3 : 0.9,
+                'Autism Spectrum Disorder': age < 18 ? 1.2 : 0.8,
+                
+                // Diseases more common in adults (18-65)
+                'Hypertension (High BP)': age >= 40 ? 1.3 : 0.9,
+                'Diabetes Mellitus (Type 1/2)': age >= 30 ? 1.2 : 0.9,
+                'Heart Attack (Myocardial Infarction)': age >= 45 ? 1.4 : 0.8,
+                'Stroke': age >= 50 ? 1.3 : 0.8,
+                
+                // Diseases more common in elderly (65+)
+                'Alzheimer\'s Disease': age >= 65 ? 1.5 : 0.7,
+                'Parkinson\'s Disease': age >= 60 ? 1.4 : 0.8,
+                'Osteoporosis': age >= 50 ? 1.3 : 0.8,
+                'Osteoarthritis': age >= 50 ? 1.3 : 0.9,
+                'Cataract': age >= 60 ? 1.4 : 0.8,
+                'Glaucoma': age >= 40 ? 1.2 : 0.9
+            };
+
+            return percentage * (ageFactor[disease.name] || 1.0);
+        }
+
+        // Sex-based adjustments
+        function adjustForSex(disease, sex, percentage) {
+            const sexFactor = {
+                // More common in females
+                'Breast Cancer': sex === 'female' ? 1.4 : 0.6,
+                'Cervical Cancer': sex === 'female' ? 1.5 : 0.0,
+                'Osteoporosis': sex === 'female' ? 1.3 : 0.8,
+                'Rheumatoid Arthritis': sex === 'female' ? 1.2 : 0.9,
+                'Fibromyalgia': sex === 'female' ? 1.3 : 0.8,
+                'Depression': sex === 'female' ? 1.2 : 0.9,
+                'Anxiety Disorder': sex === 'female' ? 1.2 : 0.9,
+                'Urinary Tract Infection (UTI)': sex === 'female' ? 1.4 : 0.7,
+                
+                // More common in males
+                'Prostate Cancer': sex === 'male' ? 1.5 : 0.0,
+                'Heart Attack (Myocardial Infarction)': sex === 'male' ? 1.2 : 0.9,
+                'Gout': sex === 'male' ? 1.3 : 0.8,
+                'ADHD': sex === 'male' ? 1.2 : 0.9,
+                'Autism Spectrum Disorder': sex === 'male' ? 1.3 : 0.8,
+                'Hemophilia': sex === 'male' ? 1.4 : 0.7
+            };
+
+            return percentage * (sexFactor[disease.name] || 1.0);
+        }
+
+        // Levenshtein distance for fuzzy matching
+        function levenshteinDistance(str1, str2) {
+            const matrix = [];
+            
+            for (let i = 0; i <= str2.length; i++) {
+                matrix[i] = [i];
+            }
+            
+            for (let j = 0; j <= str1.length; j++) {
+                matrix[0][j] = j;
+            }
+            
+            for (let i = 1; i <= str2.length; i++) {
+                for (let j = 1; j <= str1.length; j++) {
+                    if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(
+                            matrix[i - 1][j - 1] + 1,
+                            matrix[i][j - 1] + 1,
+                            matrix[i - 1][j] + 1
+                        );
+                    }
+                }
+            }
+            
+            return matrix[str2.length][str1.length];
+        }
+
+        // Show error message
+        function showError(message) {
+            errorMessage.textContent = message;
+            symptomsError.classList.remove('hidden');
+            symptomsInput.classList.add('border-error');
+            symptomsInput.focus();
+        }
+
+        // Hide error message
+        function hideError() {
+            symptomsError.classList.add('hidden');
+            symptomsInput.classList.remove('border-error');
+        }
+
+        // Show loading state
+        function showLoading() {
+            btnText.textContent = 'Analyzing...';
+            btnIcon.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+            analyzeBtn.disabled = true;
+            analyzeBtn.classList.add('opacity-75', 'cursor-not-allowed');
+        }
+
+        // Hide loading state
+        function hideLoading() {
+            btnText.textContent = 'Analyze Symptoms';
+            btnIcon.classList.remove('hidden');
+            loadingSpinner.classList.add('hidden');
+            analyzeBtn.disabled = false;
+            analyzeBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+        }
+
+        // Form submission
+        symptomForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const symptoms = symptomsInput.value;
+            const age = parseInt(ageInput.value) || null;
+            const sex = sexInput.value || null;
+            
+            // Validate symptoms
+            const symptomValidationError = validateSymptoms(symptoms);
+            if (symptomValidationError) {
+                showError(symptomValidationError);
+                return;
+            }
+            
+            // Validate age
+            const ageValidationError = validateAge(age);
+            if (ageValidationError) {
+                showError(ageValidationError);
+                ageInput.focus();
+                return;
+            }
+            
+            hideError();
+            showLoading();
+            
+            // Perform analysis
+            const analysisResults = analyzeSymptoms(symptoms.trim(), age, sex);
+            
+            // Store results and form data in sessionStorage
+            sessionStorage.setItem('userSymptoms', symptoms.trim());
+            sessionStorage.setItem('userAge', age || '');
+            sessionStorage.setItem('userSex', sex || '');
+            sessionStorage.setItem('analysisResults', JSON.stringify(analysisResults));
+            
+            // Simulate analysis delay
+            setTimeout(() => {
+                hideLoading();
+                // Redirect to results page
+                window.location.href = './disease_analysis_result.html';
+            }, 2500);
+        });
+
+        // Clear button functionality
+        clearBtn.addEventListener('click', function() {
+            symptomsInput.value = '';
+            ageInput.value = '';
+            sexInput.value = '';
+            charCount.textContent = '0';
+            hideError();
+            symptomsInput.focus();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + Enter to submit
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                symptomForm.dispatchEvent(new Event('submit'));
+            }
+            
+            // Escape to clear
+            if (e.key === 'Escape' && (document.activeElement === symptomsInput || document.activeElement === ageInput || document.activeElement === sexInput)) {
+                clearBtn.click();
+            }
+        });
+
+        // Auto-resize textarea
+        symptomsInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 200) + 'px';
+        });
+
+        // Focus input on page load
+        window.addEventListener('load', function() {
+            symptomsInput.focus();
+        });
+
+        // Age input validation on change
+        ageInput.addEventListener('input', function() {
+            const age = parseInt(this.value);
+            if (age && (age < 1 || age > 120)) {
+                this.classList.add('border-error');
+            } else {
+                this.classList.remove('border-error');
+                hideError();
+            }
+        });
+</script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

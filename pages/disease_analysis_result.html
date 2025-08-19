@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disease Analysis Results - SymptomChecker</title>
+    <meta name="description" content="View your symptom analysis results with possible conditions and medical recommendations." />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fsymptomche8926back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm border-b border-secondary-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Brand -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-semibold text-text-primary">SymptomChecker</h1>
+                        <p class="text-sm text-text-secondary"> Health Analysis</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="symptom_analysis_landing_page.html" class="text-text-secondary hover:text-primary transition-colors">Home</a>
+                    <a href="disease_analysis_result.html" class="text-primary font-medium">Results</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 text-text-secondary hover:text-primary" id="mobileMenuBtn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden mt-4 pb-4 border-t border-secondary-200 hidden" id="mobileMenu">
+                <nav class="flex flex-col space-y-3 pt-4">
+                    <a href="symptom_analysis_landing_page.html" class="text-text-secondary hover:text-primary transition-colors">Home</a>
+                    <a href="disease_analysis_result.html" class="text-primary font-medium">Results</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <!-- Medical Disclaimer Banner -->
+    
+
+        <!-- Breadcrumb Navigation -->
+        <section class="bg-surface py-4 border-b border-secondary-200">
+            <div class="container mx-auto px-4">
+                <nav class="flex items-center space-x-2 text-sm max-w-6xl mx-auto" aria-label="Breadcrumb">
+                    <a href="symptom_analysis_landing_page.html" class="text-text-secondary hover:text-primary transition-colors">
+                        Symptom Analysis
+                    </a>
+                    <svg class="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    <span class="text-text-primary font-medium">Analysis Results</span>
+                </nav>
+            </div>
+        </section>
+
+<!-- Results Header Section -->
+<section class="py-8 md:py-12">
+    <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Analysis Summary -->
+            <div class="medical-card p-6 md:p-8 mb-8">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="flex-1">
+                        <h1 class="text-2xl md:text-3xl font-bold text-text-primary mb-3">Most Likely Condition</h1>
+                        <div class="space-y-2">
+                            <p class="text-text-secondary">
+                                <span class="font-medium">Analyzed Symptoms:</span>
+                            </p>
+                            <div class="bg-secondary-50 rounded-lg p-4">
+                                <p id="analyzedSymptoms" class="text-text-primary font-medium">
+                                    headache, fever, fatigue, sore throat
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-text-secondary mt-3">
+                            Analysis completed on <span id="analysisDate">August 18, 2025</span> • Showing your best match
+                        </p>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button id="modifyBtn" class="btn-secondary flex items-center justify-center space-x-2 touch-target">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                            </svg>
+                            <span>Modify Symptoms</span>
+                        </button>
+                        
+                        <a href="symptom_analysis_landing_page.html" class="btn-primary flex items-center justify-center space-x-2 touch-target">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                            </svg>
+                            <span>New Analysis</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results Grid Section -->
+<section class="pb-16 md:pb-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+            <div id="resultsGrid" class="grid grid-cols-1 gap-8">
+                <!-- Single Best Match Result Card -->
+                <div class="medical-card p-8 fade-in" id="bestMatchCard">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-primary mb-2">Best Match Found</h2>
+                        <p class="text-text-secondary">Based on your specific symptom combination</p>
+                    </div>
+
+                    <div class="bg-primary-50 rounded-xl p-6 border-2 border-primary-200 mb-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex-1">
+                                <h3 id="diseaseName" class="text-2xl font-bold text-text-primary mb-3">Strep Throat</h3>
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 bg-primary rounded-full mr-3"></div>
+                                        <span id="matchPercentage" class="text-lg font-bold text-primary">92% Match</span>
+                                    </div>
+                                    <span id="diseaseCategory" class="text-sm font-medium text-text-secondary bg-white px-3 py-1 rounded-full">Bacterial Infection</span>
+                                </div>
+                            </div>
+                            <button class="expand-btn p-2 text-text-secondary hover:text-primary transition-colors" data-target="details-best">
+                                <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Matching Symptoms -->
+                        <div class="mb-6">
+                            <h4 class="text-base font-semibold text-text-primary mb-3">Matching Symptoms:</h4>
+                            <div id="matchedSymptoms" class="flex flex-wrap gap-2">
+                                <span class="px-4 py-2 bg-primary text-white text-sm font-medium rounded-full">Sore throat</span>
+                                <span class="px-4 py-2 bg-primary text-white text-sm font-medium rounded-full">Fever</span>
+                                <span class="px-4 py-2 bg-primary text-white text-sm font-medium rounded-full">Fatigue</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Advice -->
+                        <div id="quickAdvice" class="bg-error-50 rounded-lg p-4 mb-4 border border-error-200">
+                            <h4 class="text-sm font-semibold text-error mb-2 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                                </svg>
+                                Requires Medical Attention
+                            </h4>
+                            <p class="text-sm text-error">
+                                Bacterial infection requiring antibiotic treatment. See a healthcare provider for proper diagnosis and treatment.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Expandable Details -->
+                    <div id="details-best" class="expandable-content hidden">
+                        <div class="border-t border-secondary-200 pt-6 space-y-8">
+                            <!-- Basic Information Grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <!-- Left Column -->
+                                <div class="space-y-6">
+                                    <div>
+                                        <h5 class="font-semibold text-text-primary mb-3 flex items-center">
+                                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h6a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                            </svg>
+                                            Common Symptoms:
+                                        </h5>
+                                        <ul id="commonSymptoms" class="text-sm text-text-secondary space-y-2 ml-4">
+                                            <li>• Severe sore throat</li>
+                                            <li>• Red, swollen tonsils</li>
+                                            <li>• White patches on throat</li>
+                                            <li>• Fever above 101°F</li>
+                                            <li>• Swollen lymph nodes</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h5 class="font-semibold text-text-primary mb-3 flex items-center">
+                                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            Duration:
+                                        </h5>
+                                        <p id="duration" class="text-sm text-text-secondary">3-7 days with treatment</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Right Column -->
+                                <div class="space-y-6">
+                                    <div>
+                                        <h5 class="font-semibold text-text-primary mb-3 flex items-center">
+                                            <svg class="w-5 h-5 mr-2 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                                            </svg>
+                                            When to See a Doctor:
+                                        </h5>
+                                        <p id="doctorAdvice" class="text-sm text-text-secondary">Immediately for proper diagnosis and antibiotic treatment</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <h5 class="font-semibold text-text-primary mb-3 flex items-center">
+                                            <svg class="w-5 h-5 mr-2 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            Urgency Level:
+                                        </h5>
+                                        <p id="urgencyLevel" class="text-sm text-text-secondary">Moderate - Schedule appointment within 24-48 hours</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Treatment & Cure Information -->
+                            <div class="bg-accent-50 rounded-lg p-6 border border-accent-200">
+                                <h5 class="text-lg font-semibold text-accent mb-4 flex items-center">
+                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                    Treatment & Cure Information
+                                </h5>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Medical Treatment -->
+                                    <div>
+                                        <h6 class="font-medium text-accent mb-3 flex items-center">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                                            </svg>
+                                            Prescription Medications:
+                                        </h6>
+                                        <ul id="medications" class="text-sm text-accent space-y-1 mb-4">
+                                            <li>• Amoxicillin (first-line antibiotic)</li>
+                                            <li>• Penicillin VK (alternative)</li>
+                                            <li>• Azithromycin (if allergic to penicillin)</li>
+                                            <li>• Pain relievers (acetaminophen, ibuprofen)</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Home Remedies -->
+                                    <div>
+                                        <h6 class="font-medium text-accent mb-3 flex items-center">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                                            </svg>
+                                            Home Care & Relief:
+                                        </h6>
+                                        <ul id="homeRemedies" class="text-sm text-accent space-y-1">
+                                            <li>• Warm salt water gargles</li>
+                                            <li>• Stay hydrated with warm liquids</li>
+                                            <li>• Use throat lozenges or sprays</li>
+                                            <li>• Get plenty of rest</li>
+                                            <li>• Use a humidifier</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Treatment Duration & Notes -->
+                                <div class="mt-6 bg-white rounded-lg p-4 border border-accent-100">
+                                    <h6 class="font-medium text-accent mb-2 flex items-center">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        Treatment Duration & Important Notes:
+                                    </h6>
+                                    <div id="treatmentNotes" class="text-sm text-accent leading-relaxed">
+                                        <p class="mb-2"><strong>Antibiotic Course:</strong> Complete the full 7-10 day course even if symptoms improve</p>
+                                        <p class="mb-2"><strong>Recovery Time:</strong> Most patients feel better within 24-48 hours of starting antibiotics</p>
+                                        <p class="text-warning-600"><strong>⚠️ Important:</strong> Return to doctor if symptoms worsen or don't improve within 3 days of treatment</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hospital & Specialist Recommendations -->
+                            <div class="bg-primary-50 rounded-lg p-6 border border-primary-200">
+                                <h5 class="text-lg font-semibold text-primary mb-4 flex items-center">
+                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h2M9 7h6m-6 4h6m-6 4h6"/>
+                                    </svg>
+                                    Recommended Healthcare Providers & Departments
+                                </h5>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Primary Specialists -->
+                                    <div>
+                                        <h6 class="font-medium text-primary mb-3 flex items-center">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                            </svg>
+                                            Primary Care Options:
+                                        </h6>
+                                        <ul id="primaryCare" class="text-sm text-primary space-y-2 mb-4">
+                                            <li class="flex items-start">
+                                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                                <span><strong>Family Medicine</strong> - General diagnosis and antibiotic treatment</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                                <span><strong>Internal Medicine</strong> - Adult care and complications management</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                                <span><strong>Urgent Care Centers</strong> - Quick diagnosis and treatment</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Specialist Care -->
+                                    <div>
+                                        <h6 class="font-medium text-primary mb-3 flex items-center">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                            </svg>
+                                            Specialist Referrals (If Needed):
+                                        </h6>
+                                        <ul id="specialists" class="text-sm text-primary space-y-2">
+                                            <li class="flex items-start">
+                                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                                <span><strong>ENT (Otolaryngology)</strong> - For recurrent or complicated cases</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                                <span><strong>Infectious Disease</strong> - For resistant infections</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                                <span><strong>Pediatrics</strong> - For children under 18</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Hospital Department Recommendations -->
+                                <div class="mt-6 bg-white rounded-lg p-4 border border-primary-100">
+                                    <h6 class="font-medium text-primary mb-3 flex items-center">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h2M9 7h6m-6 4h6m-6 4h6"/>
+                                        </svg>
+                                        Hospital Departments to Visit:
+                                    </h6>
+                                    <div id="hospitalDepartments" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-primary">
+                                        <div class="flex items-center p-3 bg-primary-50 rounded border border-primary-100">
+                                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                                <span class="text-white text-xs font-bold">1</span>
+                                            </div>
+                                            <div>
+                                                <strong>Outpatient Clinic</strong><br />
+                                                <span class="text-xs">Regular appointments and follow-ups</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center p-3 bg-primary-50 rounded border border-primary-100">
+                                            <div class="w-8 h-8 bg-error rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                                <span class="text-white text-xs font-bold">⚠</span>
+                                            </div>
+                                            <div>
+                                                <strong>Emergency Room</strong><br />
+                                                <span class="text-xs">Severe symptoms or complications only</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Emergency Warning -->
+                                <div class="mt-4 bg-error-50 rounded-lg p-4 border border-error-200">
+                                    <h6 class="font-medium text-error mb-2 flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                                        </svg>
+                                        Seek Emergency Care If:
+                                    </h6>
+                                    <ul id="emergencySigns" class="text-sm text-error space-y-1">
+                                        <li>• Difficulty swallowing or breathing</li>
+                                        <li>• Severe dehydration or inability to drink</li>
+                                        <li>• High fever (over 103°F/39.5°C)</li>
+                                        <li>• Signs of severe complications (rash, joint swelling)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results Message (Hidden by default) -->
+            <div id="noResults" class="text-center py-12 hidden">
+                <svg class="w-16 h-16 text-secondary-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                <h3 class="text-lg font-medium text-text-primary mb-2">No Match Found</h3>
+                <p class="text-text-secondary mb-6">No conditions closely match your symptoms. Please consider consulting a healthcare provider.</p>
+                <a href="symptom_analysis_landing_page.html" class="btn-primary">Try Different Symptoms</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Action Section -->
+<section class="bg-surface py-12 md:py-16">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-6">Next Steps & Healthcare Resources</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Back to Home -->
+                <div class="medical-card p-6 text-center">
+                    <div class="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-2">New Analysis</h3>
+                    <p class="text-sm text-text-secondary mb-4">Start a fresh symptom analysis or modify your current symptoms.</p>
+                    <a href="symptom_analysis_landing_page.html" class="btn-primary text-sm">Back to Home</a>
+                </div>
+                
+                <!-- Save Results -->
+                <div class="medical-card p-6 text-center">
+                    <div class="w-12 h-12 bg-accent-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-2">Save Results</h3>
+                    <p class="text-sm text-text-secondary mb-4">Download or print your analysis and treatment information for your doctor.</p>
+                    <button id="saveBtn" class="btn-secondary text-sm">Save PDF</button>
+                </div>
+                
+                <!-- Share with Doctor -->
+                <div class="medical-card p-6 text-center">
+                    <div class="w-12 h-12 bg-warning-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-2">Share Results</h3>
+                    <p class="text-sm text-text-secondary mb-4">Email your analysis and treatment recommendations to your healthcare provider.</p>
+                    <button id="shareBtn" class="btn-secondary text-sm">Share Results</button>
+                </div>
+                
+                <!-- Find Healthcare Providers -->
+                <div class="medical-card p-6 text-center">
+                    <div class="w-12 h-12 bg-error-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-2">Find Doctors</h3>
+                    <p class="text-sm text-text-secondary mb-4">Locate recommended healthcare providers and specialists in your area.</p>
+                    <button id="appointmentBtn" class="btn-primary text-sm">Find Providers</button>
+                </div>
+            </div>
+
+            <!-- Hospital Directory & Emergency Information -->
+            <div class="bg-primary-50 rounded-lg p-6 border border-primary-100 mb-8">
+                <h3 class="text-lg font-semibold text-primary mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h2M9 7h6m-6 4h6m-6 4h6"/>
+                    </svg>
+                    Quick Healthcare Access Guide
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                    <!-- Same Day Care -->
+                    <div class="bg-white rounded-lg p-4 border border-primary-100">
+                        <h4 class="font-semibold text-accent mb-2 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Same-Day Care
+                        </h4>
+                        <ul class="text-text-secondary space-y-1">
+                            <li>• Urgent Care Centers</li>
+                            <li>• Walk-in Clinics</li>
+                            <li>• Retail Health Clinics</li>
+                            <li>• Telemedicine Consultations</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Scheduled Appointments -->
+                    <div class="bg-white rounded-lg p-4 border border-primary-100">
+                        <h4 class="font-semibold text-primary mb-2 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            Scheduled Care
+                        </h4>
+                        <ul class="text-text-secondary space-y-1">
+                            <li>• Primary Care Physicians</li>
+                            <li>• Specialist Consultations</li>
+                            <li>• Hospital Outpatient Clinics</li>
+                            <li>• Community Health Centers</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Emergency Care -->
+                    <div class="bg-white rounded-lg p-4 border border-error-200">
+                        <h4 class="font-semibold text-error mb-2 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                            </svg>
+                            Emergency Care
+                        </h4>
+                        <ul class="text-text-secondary space-y-1">
+                            <li>• Hospital Emergency Rooms</li>
+                            <li>• Call 911 for life-threatening symptoms</li>
+                            <li>• Poison Control: 1-800-222-1222</li>
+                            <li>• Crisis Hotlines Available 24/7</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Important Reminder -->
+            <div class="bg-primary-50 rounded-lg p-6 border border-primary-100">
+                <div class="flex items-start">
+                    <svg class="w-6 h-6 text-primary flex-shrink-0 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <div>
+                        <h4 class="font-semibold text-primary mb-2">Important Healthcare Reminder</h4>
+                        <p class="text-sm text-primary leading-relaxed">
+                            This analysis provides preliminary health information for client purposes only and should not replace professional medical advice, diagnosis, or treatment. Always consult with qualified healthcare providers for proper medical evaluation. The treatment recommendations shown are general guidelines - your healthcare provider will determine the most appropriate treatment plan for your specific situation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-secondary-200 py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Footer Content -->
+                <div class="text-center">
+                    <div class="flex items-center justify-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <span class="text-lg font-semibold text-text-primary">SymptomChecker</span>
+                    </div>
+                    
+                    <p class="text-text-secondary mb-6">
+                         Health analysis for client purposes.
+                    </p>
+                     
+                    <div class="flex flex-wrap justify-center items-center gap-6 text-sm text-text-secondary mb-6">
+                        <a href="javascript:void(0)" class="hover:text-primary transition-colors">Privacy Policy</a>
+                        <a href="javascript:void(0)" class="hover:text-primary transition-colors">Terms of Service</a>
+                        <a href="javascript:void(0)" class="hover:text-primary transition-colors">Medical Disclaimer</a>
+                        <a href="javascript:void(0)" class="hover:text-primary transition-colors">Contact Support</a>
+                    </div>
+                    
+                    <p class="text-sm text-text-secondary">
+                        © 2025 SymptomChecker. All rights reserved. | For educational use only.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const modifyBtn = document.getElementById('modifyBtn');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const noResults = document.getElementById('noResults');
+        const analyzedSymptoms = document.getElementById('analyzedSymptoms');
+        const analysisDate = document.getElementById('analysisDate');
+        const expandBtns = document.querySelectorAll('.expand-btn');
+        const saveBtn = document.getElementById('saveBtn');
+        const shareBtn = document.getElementById('shareBtn');
+        const appointmentBtn = document.getElementById('appointmentBtn');
+
+        // Result display elements
+        const bestMatchCard = document.getElementById('bestMatchCard');
+        const diseaseName = document.getElementById('diseaseName');
+        const matchPercentage = document.getElementById('matchPercentage');
+        const diseaseCategory = document.getElementById('diseaseCategory');
+        const matchedSymptoms = document.getElementById('matchedSymptoms');
+        const quickAdvice = document.getElementById('quickAdvice');
+        const commonSymptoms = document.getElementById('commonSymptoms');
+        const duration = document.getElementById('duration');
+        const doctorAdvice = document.getElementById('doctorAdvice');
+        const urgencyLevel = document.getElementById('urgencyLevel');
+        const medications = document.getElementById('medications');
+        const homeRemedies = document.getElementById('homeRemedies');
+        const treatmentNotes = document.getElementById('treatmentNotes');
+        const primaryCare = document.getElementById('primaryCare');
+        const specialists = document.getElementById('specialists');
+        const hospitalDepartments = document.getElementById('hospitalDepartments');
+        const emergencySigns = document.getElementById('emergencySigns');
+
+        // Enhanced Disease Details Database with comprehensive treatment and hospital information
+        const diseaseDetails = {
+            "COVID-19": {
+                commonSymptoms: ["• Fever or chills", "• Dry cough", "• Fatigue", "• Body aches", "• Loss of taste or smell", "• Shortness of breath"],
+                duration: "Typically 2-6 weeks",
+                doctorAdvice: "Get tested immediately and isolate. Seek medical care if breathing difficulties occur.",
+                advice: "Self-isolate, monitor symptoms, and get tested. Contact healthcare provider if symptoms worsen.",
+                adviceType: "warning",
+                urgencyLevel: "High - Test immediately and isolate",
+                medications: ["• Supportive care medications", "• Fever reducers (acetaminophen)", "• Antiviral drugs (if prescribed)", "• Monoclonal antibodies (high-risk patients)"],
+                homeRemedies: ["• Complete isolation for 5-10 days", "• Stay hydrated with fluids", "• Get plenty of rest", "• Monitor oxygen levels if available", "• Use fever reducers as needed"],
+                treatmentNotes: {
+                    duration: "Isolation period: 5-10 days depending on symptoms",
+                    recovery: "Most recover within 2-3 weeks, long COVID may persist",
+                    important: "⚠️ Seek emergency care for difficulty breathing, chest pain, or severe symptoms"
+                },
+                primaryCare: ["Family Medicine - Initial testing and monitoring", "Internal Medicine - Adult care and complications", "Urgent Care Centers - Testing and mild symptom management"],
+                specialists: ["Pulmonology - For respiratory complications", "Infectious Disease - For severe or prolonged cases", "Cardiology - For heart-related complications"],
+                hospitalDepartments: ["COVID-19 Testing Centers", "Outpatient Clinics for mild cases"],
+                emergencySigns: ["• Difficulty breathing or shortness of breath", "• Persistent chest pain or pressure", "• New confusion or inability to stay awake", "• Bluish lips or face", "• Severe or persistent vomiting"]
+            },
+            "Tuberculosis (TB)": {
+                commonSymptoms: ["• Persistent cough lasting 3+ weeks", "• Coughing up blood", "• Chest pain", "• Night sweats", "• Weight loss", "• Fatigue"],
+                duration: "6-9 months with treatment",
+                doctorAdvice: "Immediate medical attention required for testing and treatment to prevent transmission.",
+                advice: "Requires immediate medical attention. TB is serious but treatable with proper medication.",
+                adviceType: "error",
+                urgencyLevel: "Very High - Immediate medical attention required",
+                medications: ["• First-line anti-TB drugs (RIPE regimen)", "• Isoniazid, Rifampin, Ethambutol, Pyrazinamide", "• Vitamin B6 supplements", "• Second-line drugs for resistant TB"],
+                homeRemedies: ["• Complete isolation until non-infectious", "• Maintain strict medication adherence", "• Nutritious diet with high protein", "• Adequate rest and sleep", "• No alcohol or smoking"],
+                treatmentNotes: {
+                    duration: "Minimum 6-9 months of continuous treatment",
+                    recovery: "Cure rate >95% with proper treatment adherence",
+                    important: "⚠️ Critical: Never stop treatment early, even if feeling better"
+                },
+                primaryCare: ["Infectious Disease Specialists - Primary TB treatment", "Pulmonology - Lung function monitoring", "Public Health Departments - Contact tracing"],
+                specialists: ["TB Specialists - Dedicated TB treatment centers", "Pulmonology - For lung complications", "Infectious Disease - For drug-resistant cases"],
+                hospitalDepartments: ["TB Treatment Centers", "Isolation Units", "Respiratory Medicine Departments"],
+                emergencySigns: ["• Coughing up large amounts of blood", "• Severe breathing difficulties", "• High fever with severe symptoms", "• Signs of drug toxicity", "• Severe weight loss or malnutrition"]
+            },
+            "Pneumonia": {
+                commonSymptoms: ["• Fever with chills", "• Productive cough", "• Chest pain when breathing", "• Shortness of breath", "• Fatigue", "• Nausea"],
+                duration: "1-3 weeks with treatment",
+                doctorAdvice: "Seek medical care immediately, especially if experiencing breathing difficulties.",
+                advice: "Requires medical treatment. Rest, stay hydrated, and take prescribed antibiotics.",
+                adviceType: "error",
+                urgencyLevel: "High - Seek medical care within 24 hours",
+                medications: ["• Antibiotics (amoxicillin, azithromycin)", "• Antiviral medications (if viral)", "• Pain relievers for chest pain", "• Cough suppressants if needed"],
+                homeRemedies: ["• Complete prescribed antibiotic course", "• Stay well-hydrated", "• Use a humidifier", "• Rest and avoid strenuous activity", "• Monitor temperature regularly"],
+                treatmentNotes: {
+                    duration: "Antibiotic course: 7-14 days typically",
+                    recovery: "Improvement usually seen within 48-72 hours of treatment",
+                    important: "⚠️ Return immediately if breathing worsens or fever persists after 3 days"
+                },
+                primaryCare: ["Family Medicine - Mild cases", "Internal Medicine - Adult pneumonia care", "Urgent Care - For initial diagnosis and treatment"],
+                specialists: ["Pulmonology - For severe or complicated cases", "Infectious Disease - For resistant infections", "Critical Care - For severe pneumonia"],
+                hospitalDepartments: ["Emergency Department", "Respiratory Medicine", "Internal Medicine Wards"],
+                emergencySigns: ["• Severe difficulty breathing", "• Chest pain worsening", "• High fever not responding to medication", "• Confusion or delirium", "• Bluish skin or lips"]
+            },
+            "Malaria": {
+                commonSymptoms: ["• High fever with chills", "• Severe headache", "• Sweating", "• Nausea and vomiting", "• Muscle pain", "• Fatigue"],
+                duration: "Variable, requires treatment",
+                doctorAdvice: "Emergency medical care required immediately, especially if recent travel to endemic areas.",
+                advice: "Medical emergency requiring immediate treatment. Life-threatening if untreated.",
+                adviceType: "error",
+                urgencyLevel: "Emergency - Immediate hospital care required",
+                medications: ["• Antimalarial drugs (based on species)", "• Artemisinin combination therapy", "• Chloroquine (for sensitive strains)", "• Supportive care medications"],
+                homeRemedies: ["• Immediate hospitalization required", "• Maintain hydration", "• Monitor for complications", "• Complete medication course", "• Bed rest during acute phase"],
+                treatmentNotes: {
+                    duration: "Treatment course: 3-7 days typically",
+                    recovery: "Complete cure with proper treatment within days",
+                    important: "⚠️ Life-threatening - requires immediate medical intervention"
+                },
+                primaryCare: ["Emergency Medicine - Initial stabilization", "Infectious Disease - Specialized treatment", "Travel Medicine Clinics - For travelers"],
+                specialists: ["Infectious Disease - Primary treatment", "Tropical Medicine - Specialized malaria care", "Critical Care - For severe cases"],
+                hospitalDepartments: ["Emergency Department", "Infectious Disease Unit", "Intensive Care (severe cases)"],
+                emergencySigns: ["• Severe confusion or coma", "• Difficulty breathing", "• Kidney failure symptoms", "• Severe anemia", "• Uncontrolled vomiting"]
+            },
+            "Asthma": {
+                commonSymptoms: ["• Wheezing", "• Shortness of breath", "• Chest tightness", "• Persistent cough", "• Difficulty breathing during activities"],
+                duration: "Chronic condition with episodes",
+                doctorAdvice: "See a doctor for proper diagnosis and inhaler prescription.",
+                advice: "Use rescue inhaler if available. Avoid triggers and seek medical care for management plan.",
+                adviceType: "warning",
+                urgencyLevel: "Moderate - Schedule appointment within 1-2 weeks",
+                medications: ["• Quick-relief inhalers (albuterol)", "• Long-term control inhalers", "• Corticosteroids for inflammation", "• Allergy medications if applicable"],
+                homeRemedies: ["• Identify and avoid triggers", "• Use prescribed inhalers correctly", "• Maintain clean environment", "• Regular exercise as tolerated", "• Learn breathing techniques"],
+                treatmentNotes: {
+                    duration: "Lifelong management with proper control",
+                    recovery: "Excellent control possible with proper treatment",
+                    important: "⚠️ Always carry rescue inhaler and have action plan"
+                },
+                primaryCare: ["Family Medicine - Initial diagnosis", "Internal Medicine - Adult asthma care", "Pediatrics - For children with asthma"],
+                specialists: ["Pulmonology - Specialized asthma care", "Allergy/Immunology - For allergic asthma", "ENT - For related sinus conditions"],
+                hospitalDepartments: ["Outpatient Pulmonary Clinics", "Allergy Clinics", "Emergency Department (severe attacks)"],
+                emergencySigns: ["• Severe breathing difficulty", "• Inability to speak in full sentences", "• Blue lips or fingernails", "• Peak flow in red zone", "• Rescue inhaler not helping"]
+            },
+            "Heart Attack (Myocardial Infarction)": {
+                commonSymptoms: ["• Severe chest pain", "• Left arm pain", "• Jaw pain", "• Shortness of breath", "• Sweating", "• Nausea"],
+                duration: "Emergency - immediate treatment needed",
+                doctorAdvice: "Call emergency services immediately (911). Time is critical for heart muscle survival.",
+                advice: "MEDICAL EMERGENCY - Call 911 immediately. Do not drive yourself to hospital.",
+                adviceType: "error",
+                urgencyLevel: "Life-threatening Emergency - Call 911 immediately",
+                medications: ["• Emergency clot-busting drugs", "• Aspirin (chew 1 tablet immediately)", "• Blood thinners", "• Beta-blockers and ACE inhibitors"],
+                homeRemedies: ["• Call 911 immediately", "• Chew aspirin if available", "• Sit upright and stay calm", "• Loosen tight clothing", "• Do not drive yourself"],
+                treatmentNotes: {
+                    duration: "Immediate emergency intervention required",
+                    recovery: "Recovery depends on speed of treatment and extent of damage",
+                    important: "⚠️ Every minute counts - immediate emergency care saves heart muscle"
+                },
+                primaryCare: ["Emergency Medicine - Initial stabilization", "Cardiology - Specialized heart care", "Critical Care - Intensive monitoring"],
+                specialists: ["Interventional Cardiology - Emergency procedures", "Cardiothoracic Surgery - If surgery needed", "Critical Care Medicine - ICU management"],
+                hospitalDepartments: ["Emergency Department", "Cardiac Catheterization Lab", "Cardiac ICU", "Coronary Care Unit"],
+                emergencySigns: ["• Chest pain lasting >15 minutes", "• Severe shortness of breath", "• Loss of consciousness", "• Severe sweating with chest pain", "• Pain radiating to arm, jaw, or back"]
+            },
+            "Migraine": {
+                commonSymptoms: ["• Severe, throbbing headache", "• Nausea and vomiting", "• Sensitivity to light", "• Sensitivity to sound", "• Visual disturbances"],
+                duration: "4-72 hours if untreated",
+                doctorAdvice: "Consult doctor if headaches are frequent, severe, or interfere with daily activities.",
+                advice: "Rest in dark, quiet room. Apply cold compress. Consider prescribed migraine medications.",
+                adviceType: "primary",
+                urgencyLevel: "Moderate - Schedule appointment if frequent",
+                medications: ["• Triptans (sumatriptan, rizatriptan)", "• NSAIDs (ibuprofen, naproxen)", "• Preventive medications", "• Anti-nausea medications"],
+                homeRemedies: ["• Rest in dark, quiet room", "• Apply cold compress to head", "• Stay hydrated", "• Avoid trigger foods", "• Practice relaxation techniques"],
+                treatmentNotes: {
+                    duration: "Acute treatment works best when started early",
+                    recovery: "Most migraines resolve within 24-48 hours with treatment",
+                    important: "⚠️ Seek emergency care for sudden, severe 'thunderclap' headache"
+                },
+                primaryCare: ["Family Medicine - Initial diagnosis", "Internal Medicine - Adult migraine care", "Urgent Care - For severe episodes"],
+                specialists: ["Neurology - Specialized headache care", "Pain Medicine - For chronic cases", "Psychology - For stress-related triggers"],
+                hospitalDepartments: ["Outpatient Neurology Clinics", "Headache Centers", "Emergency Department (severe cases)"],
+                emergencySigns: ["• Sudden, severe 'thunderclap' headache", "• Headache with fever and stiff neck", "• Headache after head injury", "• Progressive worsening over days", "• Visual changes or speech problems"]
+            },
+            "Diabetes Mellitus (Type 1/2)": {
+                commonSymptoms: ["• Excessive thirst", "• Frequent urination", "• Unexplained weight loss", "• Fatigue", "• Blurred vision", "• Slow healing wounds"],
+                duration: "Chronic condition requiring management",
+                doctorAdvice: "Schedule appointment for blood glucose testing and diabetes management plan.",
+                advice: "Requires medical evaluation and ongoing management. Monitor blood sugar levels.",
+                adviceType: "warning",
+                urgencyLevel: "Moderate - Schedule appointment within 1-2 weeks",
+                medications: ["• Insulin (Type 1 and advanced Type 2)", "• Metformin (Type 2 first-line)", "• Other oral diabetes medications", "• Blood glucose monitoring supplies"],
+                homeRemedies: ["• Follow prescribed diet plan", "• Regular blood glucose monitoring", "• Daily exercise as recommended", "• Take medications as prescribed", "• Maintain healthy weight"],
+                treatmentNotes: {
+                    duration: "Lifelong management required",
+                    recovery: "Excellent control possible with proper management",
+                    important: "⚠️ Monitor for high/low blood sugar emergencies"
+                },
+                primaryCare: ["Family Medicine - Ongoing diabetes care", "Internal Medicine - Adult diabetes management", "Endocrinology - Specialized diabetes care"],
+                specialists: ["Endocrinology - Hormone specialists", "Ophthalmology - Eye complications", "Podiatry - Foot care", "Nephrology - Kidney complications"],
+                hospitalDepartments: ["Endocrinology Clinics", "Diabetes Education Centers", "Emergency Department (diabetic emergencies)"],
+                emergencySigns: ["• Very high blood sugar (>400 mg/dl)", "• Severe low blood sugar symptoms", "• Diabetic ketoacidosis symptoms", "• Loss of consciousness", "• Severe dehydration"]
+            },
+            "Strep Throat": {
+                commonSymptoms: ["• Severe sore throat", "• Red, swollen tonsils", "• White patches on throat", "• Fever above 101°F", "• Swollen lymph nodes"],
+                duration: "3-7 days with treatment",
+                doctorAdvice: "Immediately for proper diagnosis and antibiotic treatment",
+                advice: "Bacterial infection requiring antibiotic treatment. See a healthcare provider for proper diagnosis and treatment.",
+                adviceType: "error",
+                urgencyLevel: "Moderate - Schedule appointment within 24-48 hours",
+                medications: ["• Amoxicillin (first-line antibiotic)", "• Penicillin VK (alternative)", "• Azithromycin (if allergic to penicillin)", "• Pain relievers (acetaminophen, ibuprofen)"],
+                homeRemedies: ["• Warm salt water gargles", "• Stay hydrated with warm liquids", "• Use throat lozenges or sprays", "• Get plenty of rest", "• Use a humidifier"],
+                treatmentNotes: {
+                    duration: "Antibiotic Course: Complete the full 7-10 day course even if symptoms improve",
+                    recovery: "Most patients feel better within 24-48 hours of starting antibiotics",
+                    important: "⚠️ Important: Return to doctor if symptoms worsen or don't improve within 3 days of treatment"
+                },
+                primaryCare: ["Family Medicine - General diagnosis and antibiotic treatment", "Internal Medicine - Adult care and complications management", "Urgent Care Centers - Quick diagnosis and treatment"],
+                specialists: ["ENT (Otolaryngology) - For recurrent or complicated cases", "Infectious Disease - For resistant infections", "Pediatrics - For children under 18"],
+                hospitalDepartments: ["Outpatient Clinic", "Emergency Room - Severe symptoms or complications only"],
+                emergencySigns: ["• Difficulty swallowing or breathing", "• Severe dehydration or inability to drink", "• High fever (over 103°F/39.5°C)", "• Signs of severe complications (rash, joint swelling)"]
+            },
+            "Appendicitis": {
+                commonSymptoms: ["• Severe abdominal pain (right side)", "• Nausea and vomiting", "• Loss of appetite", "• Fever", "• Pain worsens with movement"],
+                duration: "Emergency - requires immediate surgery",
+                doctorAdvice: "Emergency medical attention required immediately - potential surgery needed.",
+                advice: "MEDICAL EMERGENCY - Seek immediate emergency care. May require surgical removal.",
+                adviceType: "error",
+                urgencyLevel: "Life-threatening Emergency - Go to ER immediately",
+                medications: ["• Antibiotics (pre and post surgery)", "• Pain medications (post-surgery)", "• Anti-nausea medications", "• IV fluids during treatment"],
+                homeRemedies: ["• Do not eat or drink anything", "• Go to emergency room immediately", "• Do not take pain medications", "• Avoid heat application", "• Do not use laxatives"],
+                treatmentNotes: {
+                    duration: "Emergency surgery typically required within hours",
+                    recovery: "Full recovery in 2-4 weeks after surgery",
+                    important: "⚠️ Life-threatening if appendix ruptures - immediate surgery needed"
+                },
+                primaryCare: ["Emergency Medicine - Initial diagnosis", "General Surgery - Appendectomy procedure", "Critical Care - If complications arise"],
+                specialists: ["General Surgery - Emergency appendectomy", "Emergency Medicine - Initial stabilization", "Anesthesiology - For surgery"],
+                hospitalDepartments: ["Emergency Department", "Operating Room", "General Surgery Unit"],
+                emergencySigns: ["• Severe, worsening abdominal pain", "• High fever with abdominal pain", "• Vomiting preventing fluid intake", "• Signs of rupture (severe illness)", "• Abdominal rigidity or swelling"]
+            },
+            "Urinary Tract Infection (UTI)": {
+                commonSymptoms: ["• Burning sensation when urinating", "• Frequent urination", "• Cloudy or strong-smelling urine", "• Pelvic pain", "• Urgency to urinate"],
+                duration: "3-7 days with treatment",
+                doctorAdvice: "See healthcare provider for antibiotic treatment to prevent kidney infection.",
+                advice: "Requires antibiotic treatment. Drink plenty of water and see healthcare provider.",
+                adviceType: "warning",
+                urgencyLevel: "Moderate - Schedule appointment within 24-48 hours",
+                medications: ["• Antibiotics (trimethoprim-sulfamethoxazole)", "• Nitrofurantoin", "• Ciprofloxacin (if complicated)", "• Pain relief (phenazopyridine)"],
+                homeRemedies: ["• Drink plenty of water", "• Urinate frequently, don't hold it", "• Cranberry juice (unsweetened)", "• Avoid irritating foods and drinks", "• Use heat pad for pelvic pain"],
+                treatmentNotes: {
+                    duration: "Antibiotic course: typically 3-7 days",
+                    recovery: "Symptoms improve within 1-2 days of antibiotics",
+                    important: "⚠️ Seek immediate care if fever develops - may indicate kidney infection"
+                },
+                primaryCare: ["Family Medicine - Standard UTI treatment", "Urgent Care - Quick diagnosis and treatment", "Women's Health - Recurrent UTI management"],
+                specialists: ["Urology - For recurrent or complicated UTIs", "Nephrology - If kidney involvement", "Gynecology - For women with recurrent UTIs"],
+                hospitalDepartments: ["Urgent Care Centers", "Outpatient Clinics", "Emergency Department (if fever present)"],
+                emergencySigns: ["• High fever with back pain", "• Severe nausea and vomiting", "• Blood in urine", "• Inability to urinate", "• Severe kidney pain"]
+            },
+            "Depression": {
+                commonSymptoms: ["• Persistent sadness", "• Loss of interest in activities", "• Sleep disturbances", "• Fatigue", "• Changes in appetite", "• Difficulty concentrating"],
+                duration: "Variable - professional help recommended",
+                doctorAdvice: "Consult mental health professional or primary care doctor for evaluation and treatment.",
+                advice: "Professional help available. Consider therapy and/or medication consultation with healthcare provider.",
+                adviceType: "primary",
+                urgencyLevel: "Moderate - Schedule appointment within 1-2 weeks",
+                medications: ["• Antidepressants (SSRIs, SNRIs)", "• Therapy combined with medication", "• Mood stabilizers if needed", "• Sleep aids if sleep disturbance"],
+                homeRemedies: ["• Regular exercise routine", "• Maintain social connections", "• Practice mindfulness/meditation", "• Consistent sleep schedule", "• Healthy diet and nutrition"],
+                treatmentNotes: {
+                    duration: "Treatment often requires several months to years",
+                    recovery: "Most people improve significantly with proper treatment",
+                    important: "⚠️ Seek immediate help if having thoughts of self-harm"
+                },
+                primaryCare: ["Family Medicine - Initial evaluation", "Psychiatry - Specialized mental health care", "Psychology - Therapy and counseling"],
+                specialists: ["Psychiatry - Medication management", "Psychology - Psychotherapy", "Social Work - Counseling and support services"],
+                hospitalDepartments: ["Mental Health Clinics", "Psychiatry Outpatient", "Emergency Department (crisis situations)"],
+                emergencySigns: ["• Thoughts of suicide or self-harm", "• Severe inability to function", "• Psychotic symptoms", "• Severe agitation", "• Substance abuse with depression"]
+            },
+            "Anxiety Disorder": {
+                commonSymptoms: ["• Excessive worry", "• Racing heart", "• Restlessness", "• Muscle tension", "• Panic attacks", "• Difficulty concentrating"],
+                duration: "Variable - professional help recommended",
+                doctorAdvice: "Consult mental health professional for evaluation and anxiety management strategies.",
+                advice: "Professional help available. Practice relaxation techniques and consider professional consultation.",
+                adviceType: "primary",
+                urgencyLevel: "Moderate - Schedule appointment within 1-2 weeks",
+                medications: ["• Anti-anxiety medications (benzodiazepines)", "• Antidepressants (SSRIs for anxiety)", "• Beta-blockers for physical symptoms", "• Buspirone for generalized anxiety"],
+                homeRemedies: ["• Deep breathing exercises", "• Regular physical exercise", "• Limit caffeine and alcohol", "• Practice mindfulness meditation", "• Maintain regular sleep schedule"],
+                treatmentNotes: {
+                    duration: "Treatment varies, often several months to manage",
+                    recovery: "Most people learn to manage anxiety effectively with treatment",
+                    important: "⚠️ Seek immediate help during severe panic attacks or if avoiding daily activities"
+                },
+                primaryCare: ["Family Medicine - Initial evaluation", "Psychiatry - Specialized anxiety treatment", "Psychology - Cognitive behavioral therapy"],
+                specialists: ["Psychiatry - Medication management", "Psychology - Specialized anxiety therapy", "Social Work - Support and coping strategies"],
+                hospitalDepartments: ["Mental Health Clinics", "Psychiatry Outpatient", "Emergency Department (severe panic attacks)"],
+                emergencySigns: ["• Severe panic attacks affecting daily life", "• Agoraphobia preventing leaving home", "• Physical symptoms mimicking heart attack", "• Complete avoidance of normal activities", "• Suicidal thoughts related to anxiety"]
+            }
+        };
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAnalysisData();
+            setupEventListeners();
+        });
+
+        // Load analysis data from sessionStorage or use default
+        function loadAnalysisData() {
+            const userSymptoms = sessionStorage.getItem('userSymptoms');
+            const analysisResults = sessionStorage.getItem('analysisResults');
+            
+            if (userSymptoms) {
+                analyzedSymptoms.textContent = userSymptoms;
+            }
+            
+            // Set current date
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            analysisDate.textContent = today.toLocaleDateString('en-US', options);
+            
+            // Display results
+            if (analysisResults) {
+                try {
+                    const results = JSON.parse(analysisResults);
+                    displayResults(results);
+                } catch (e) {
+                    console.error('Error parsing analysis results:', e);
+                    showNoResults();
+                }
+            } else {
+                showNoResults();
+            }
+        }
+
+        // Display the single best match result with enhanced treatment information
+        function displayResults(results) {
+            if (results && results.length > 0) {
+                const bestMatch = results[0];
+                
+                // Update disease information
+                diseaseName.textContent = bestMatch.disease;
+                matchPercentage.textContent = `${bestMatch.matchPercentage}% Match`;
+                diseaseCategory.textContent = bestMatch.category;
+                
+                // Update matched symptoms
+                matchedSymptoms.innerHTML = '';
+                bestMatch.matchedSymptoms.forEach(symptom => {
+                    const span = document.createElement('span');
+                    span.className = 'px-4 py-2 bg-primary text-white text-sm font-medium rounded-full';
+                    span.textContent = symptom;
+                    matchedSymptoms.appendChild(span);
+                });
+                
+                // Update detailed information with treatment data
+                const details = diseaseDetails[bestMatch.disease];
+                if (details) {
+                    // Update basic information
+                    updateBasicInfo(details);
+                    
+                    // Update treatment information
+                    updateTreatmentInfo(details);
+                    
+                    // Update hospital recommendations
+                    updateHospitalInfo(details);
+                    
+                    // Update quick advice based on severity
+                    updateQuickAdvice(details.advice, details.adviceType);
+                }
+                
+                // Show the result card
+                bestMatchCard.classList.remove('hidden');
+                noResults.classList.add('hidden');
+                
+            } else {
+                showNoResults();
+            }
+        }
+
+        // Update basic disease information
+        function updateBasicInfo(details) {
+            // Update common symptoms
+            commonSymptoms.innerHTML = '';
+            details.commonSymptoms.forEach(symptom => {
+                const li = document.createElement('li');
+                li.textContent = symptom;
+                commonSymptoms.appendChild(li);
+            });
+            
+            // Update duration, doctor advice, and urgency
+            duration.textContent = details.duration;
+            doctorAdvice.textContent = details.doctorAdvice;
+            urgencyLevel.textContent = details.urgencyLevel;
+        }
+
+        // Update treatment and cure information
+        function updateTreatmentInfo(details) {
+            // Update medications
+            medications.innerHTML = '';
+            details.medications.forEach(medication => {
+                const li = document.createElement('li');
+                li.textContent = medication;
+                medications.appendChild(li);
+            });
+            
+            // Update home remedies
+            homeRemedies.innerHTML = '';
+            details.homeRemedies.forEach(remedy => {
+                const li = document.createElement('li');
+                li.textContent = remedy;
+                homeRemedies.appendChild(li);
+            });
+            
+            // Update treatment notes
+            const notesContainer = treatmentNotes;
+            notesContainer.innerHTML = '';
+            
+            if (details.treatmentNotes) {
+                if (details.treatmentNotes.duration) {
+                    const durationP = document.createElement('p');
+                    durationP.className = 'mb-2';
+                    durationP.innerHTML = `<strong>Treatment Duration:</strong> ${details.treatmentNotes.duration}`;
+                    notesContainer.appendChild(durationP);
+                }
+                
+                if (details.treatmentNotes.recovery) {
+                    const recoveryP = document.createElement('p');
+                    recoveryP.className = 'mb-2';
+                    recoveryP.innerHTML = `<strong>Recovery Time:</strong> ${details.treatmentNotes.recovery}`;
+                    notesContainer.appendChild(recoveryP);
+                }
+                
+                if (details.treatmentNotes.important) {
+                    const importantP = document.createElement('p');
+                    importantP.className = 'text-warning-600';
+                    importantP.innerHTML = `<strong>⚠️ Important:</strong> ${details.treatmentNotes.important}`;
+                    notesContainer.appendChild(importantP);
+                }
+            }
+        }
+
+        // Update hospital and specialist recommendations
+        function updateHospitalInfo(details) {
+            // Update primary care options
+            primaryCare.innerHTML = '';
+            details.primaryCare.forEach(care => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start';
+                li.innerHTML = `
+                    <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span><strong>${care.split(' - ')[0]}</strong> - ${care.split(' - ')[1]}</span>
+                `;
+                primaryCare.appendChild(li);
+            });
+            
+            // Update specialist recommendations
+            specialists.innerHTML = '';
+            details.specialists.forEach(specialist => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start';
+                li.innerHTML = `
+                    <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span><strong>${specialist.split(' - ')[0]}</strong> - ${specialist.split(' - ')[1]}</span>
+                `;
+                specialists.appendChild(li);
+            });
+            
+            // Update hospital departments (keep existing structure but update content if needed)
+            // This maintains the existing design while allowing for dynamic content
+            
+            // Update emergency signs
+            emergencySigns.innerHTML = '';
+            details.emergencySigns.forEach(sign => {
+                const li = document.createElement('li');
+                li.textContent = sign;
+                emergencySigns.appendChild(li);
+            });
+        }
+
+        // Update quick advice styling based on severity (existing function)
+        function updateQuickAdvice(advice, adviceType) {
+            const adviceElement = quickAdvice.querySelector('p');
+            const titleElement = quickAdvice.querySelector('h4');
+            
+            // Reset classes
+            quickAdvice.className = 'rounded-lg p-4 mb-4 border';
+            titleElement.className = 'text-sm font-semibold mb-2 flex items-center';
+            
+            switch (adviceType) {
+                case 'error':
+                    quickAdvice.classList.add('bg-error-50', 'border-error-200');
+                    titleElement.classList.add('text-error');
+                    titleElement.querySelector('span').textContent = 'Requires Immediate Medical Attention';
+                    adviceElement.className = 'text-sm text-error';
+                    break;
+                case 'warning':
+                    quickAdvice.classList.add('bg-warning-50', 'border-warning-200');
+                    titleElement.classList.add('text-warning');
+                    titleElement.querySelector('span').textContent = 'Medical Consultation Recommended';
+                    adviceElement.className = 'text-sm text-warning-600';
+                    break;
+                default:
+                    quickAdvice.classList.add('bg-primary-50', 'border-primary-200');
+                    titleElement.classList.add('text-primary');
+                    titleElement.querySelector('span').textContent = 'Preliminary Advice';
+                    adviceElement.className = 'text-sm text-primary';
+            }
+            
+            adviceElement.textContent = advice;
+        }
+
+        // Show no results message
+        function showNoResults() {
+            bestMatchCard.classList.add('hidden');
+            noResults.classList.remove('hidden');
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Mobile menu toggle
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Modify symptoms button
+            if (modifyBtn) {
+                modifyBtn.addEventListener('click', function() {
+                    window.location.href = 'symptom_analysis_landing_page.html';
+                });
+            }
+
+            // Expand/collapse buttons
+            expandBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const targetElement = document.getElementById(targetId);
+                    const icon = this.querySelector('svg');
+                    
+                    if (targetElement && targetElement.classList.contains('hidden')) {
+                        targetElement.classList.remove('hidden');
+                        icon.style.transform = 'rotate(180deg)';
+                    } else if (targetElement) {
+                        targetElement.classList.add('hidden');
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Action buttons with enhanced functionality
+            if (saveBtn) {
+                saveBtn.addEventListener('click', function() {
+                    // Enhanced save functionality
+                    generateAndDownloadPDF();
+                    showNotification('Analysis and treatment information saved as PDF', 'success');
+                });
+            }
+
+            if (shareBtn) {
+                shareBtn.addEventListener('click', function() {
+                    // Enhanced share functionality
+                    shareResultsWithDoctor();
+                    showNotification('Results and treatment recommendations shared', 'success');
+                });
+            }
+
+            if (appointmentBtn) {
+                appointmentBtn.addEventListener('click', function() {
+                    // Enhanced appointment booking
+                    findHealthcareProviders();
+                    showNotification('Redirecting to healthcare provider directory...', 'info');
+                });
+            }
+        }
+
+        // Enhanced save functionality
+        function generateAndDownloadPDF() {
+            // Implementation would integrate with a PDF library
+            console.log('Generating comprehensive PDF with treatment information...');
+            // This would include symptoms, diagnosis, treatment options, medications, 
+            // home remedies, and hospital recommendations
+        }
+
+        // Enhanced share functionality
+        function shareResultsWithDoctor() {
+            // Implementation would include email/share integration
+            console.log('Sharing comprehensive results including treatment recommendations...');
+            // This would format the complete analysis for healthcare providers
+        }
+
+        // Enhanced healthcare provider finder
+        function findHealthcareProviders() {
+            // Implementation would integrate with healthcare provider APIs
+            console.log('Finding recommended healthcare providers based on condition...');
+            // This would show location-based providers specializing in the diagnosed condition
+        }
+
+        // Show notification (existing function)
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 px-6 py-4 rounded-lg shadow-lg text-white font-medium transition-all duration-300 transform translate-x-full`;
+            
+            // Set background color based on type
+            switch (type) {
+                case 'success':
+                    notification.classList.add('bg-accent');
+                    break;
+                case 'error':
+                    notification.classList.add('bg-error');
+                    break;
+                case 'warning':
+                    notification.classList.add('bg-warning');
+                    break;
+                default:
+                    notification.classList.add('bg-primary');
+            }
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Escape to close mobile menu
+            if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+            
+            // N key for new analysis
+            if (e.key === 'n' || e.key === 'N') {
+                if (!e.ctrlKey && !e.metaKey && !e.altKey) {
+                    window.location.href = 'symptom_analysis_landing_page.html';
+                }
+            }
+            
+            // H key for home
+            if (e.key === 'h' || e.key === 'H') {
+                if (!e.ctrlKey && !e.metaKey && !e.altKey) {
+                    window.location.href = 'symptom_analysis_landing_page.html';
+                }
+            }
+        });
+
+        // Auto-hide mobile menu on resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768 && mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Print functionality
+        function printResults() {
+            window.print();
+        }
+
+        // Add print styles
+        const printStyles = `
+            @media print {
+                .no-print { display: none !important; }
+                .medical-card { break-inside: avoid; }
+                body { font-size: 12pt; }
+                h1, h2, h3 { color: black !important; }
+                .bg-primary-50, .bg-accent-50, .bg-error-50 { 
+                    background-color: #f8f9fa !important; 
+                }
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = printStyles;
+        document.head.appendChild(styleSheet);
+</script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

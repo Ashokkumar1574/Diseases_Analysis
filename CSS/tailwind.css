@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #2563EB; /* blue-600 */
+  --color-primary-50: #EFF6FF; /* blue-50 */
+  --color-primary-100: #DBEAFE; /* blue-100 */
+  --color-primary-500: #3B82F6; /* blue-500 */
+  --color-primary-600: #2563EB; /* blue-600 */
+  --color-primary-700: #1D4ED8; /* blue-700 */
+  
+  /* Secondary Colors */
+  --color-secondary: #64748B; /* slate-500 */
+  --color-secondary-100: #F1F5F9; /* slate-100 */
+  --color-secondary-200: #E2E8F0; /* slate-200 */
+  --color-secondary-300: #CBD5E1; /* slate-300 */
+  --color-secondary-400: #94A3B8; /* slate-400 */
+  --color-secondary-500: #64748B; /* slate-500 */
+  --color-secondary-600: #475569; /* slate-600 */
+  
+  /* Accent Colors */
+  --color-accent: #059669; /* emerald-600 */
+  --color-accent-50: #ECFDF5; /* emerald-50 */
+  --color-accent-100: #D1FAE5; /* emerald-100 */
+  --color-accent-500: #10B981; /* emerald-500 */
+  --color-accent-600: #059669; /* emerald-600 */
+  
+  /* Background Colors */
+  --color-background: #FEFEFE; /* near-white */
+  --color-surface: #F8FAFC; /* slate-50 */
+  
+  /* Text Colors */
+  --color-text-primary: #1E293B; /* slate-800 */
+  --color-text-secondary: #64748B; /* slate-500 */
+  
+  /* Status Colors */
+  --color-success: #10B981; /* emerald-500 */
+  --color-success-50: #ECFDF5; /* emerald-50 */
+  --color-success-100: #D1FAE5; /* emerald-100 */
+  
+  --color-warning: #F59E0B; /* amber-500 */
+  --color-warning-50: #FFFBEB; /* amber-50 */
+  --color-warning-100: #FEF3C7; /* amber-100 */
+  
+  --color-error: #DC2626; /* red-600 */
+  --color-error-50: #FEF2F2; /* red-50 */
+  --color-error-100: #FEE2E2; /* red-100 */
+  
+  /* Animation Variables */
+  --transition-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 150ms;
+  --transition-normal: 200ms;
+  --transition-slow: 300ms;
+  
+  /* Shadow Variables */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  .font-data {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .medical-card {
+    @apply bg-surface rounded-lg border border-secondary-200 shadow-sm;
+    transition: all var(--transition-normal) var(--transition-ease-out);
+  }
+  
+  .medical-card:hover {
+    @apply shadow-md;
+    transform: translateY(-1px);
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-lg font-medium;
+    transition: all var(--transition-normal) var(--transition-ease-out);
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .btn-primary:hover {
+    @apply bg-primary-700;
+    transform: translateY(-1px);
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-100 text-secondary-600 px-6 py-3 rounded-lg font-medium;
+    transition: all var(--transition-normal) var(--transition-ease-out);
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-secondary-200;
+  }
+.status-success  {
+    @apply bg-success-50 border border-success-100;
+  }
+.status-warning  {
+    @apply bg-warning-50 border border-warning-100;
+  }
+  
+  .status-error {
+    @apply bg-error-50 text-error-600 border border-error-100;
+  }
+  
+  .tooltip {
+    @apply absolute z-10 px-3 py-2 text-sm bg-secondary-800 text-white rounded-md shadow-md;
+    opacity: 0;
+    transition: opacity var(--transition-fast) var(--transition-ease-out);
+    pointer-events: none;
+  }
+  
+  .tooltip.show {
+    opacity: 1;
+  }
+  
+  .progress-indicator {
+    @apply bg-secondary-200 rounded-full overflow-hidden;
+  }
+  
+  .progress-bar {
+    @apply bg-primary h-full rounded-full;
+    transition: width var(--transition-slow) var(--transition-ease-out);
+  }
+  
+  .fade-in {
+    animation: fadeIn var(--transition-normal) var(--transition-ease-out);
+  }
+  
+  .slide-up {
+    animation: slideUp var(--transition-slow) var(--transition-ease-out);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .clinical-spacing {
+    @apply space-y-6;
+  }
+  
+  .medical-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation delays for progressive disclosure */
+.stagger-1 { animation-delay: 0ms; }
+.stagger-2 { animation-delay: 100ms; }
+.stagger-3 { animation-delay: 200ms; }
+.stagger-4 { animation-delay: 300ms; }
+.stagger-5 { animation-delay: 400ms; }
